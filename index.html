@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Williamsburg Golf Simulator - 24/7 Premium Golf Experience</title>
+    <meta name="description" content="Experience world-class golf simulation 24/7 in Williamsburg. Premium TrackMan simulators, famous courses, and professional instruction available anytime.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-golf-ball"></i>
+                <span>Williamsburg Golf Simulator</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#book" class="nav-cta">Book Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Play Golf Anytime, Day or Night</h1>
+            <p>Experience premium golf simulation with TrackMan technology on world-famous courses. Available 24/7 with contactless self-service.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="openBookingModal()">
+                    <i class="fas fa-calendar-alt"></i>
+                    Book Your Session
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('features')">
+                    <i class="fas fa-play-circle"></i>
+                    Learn More
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Always Open</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Famous Courses</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">HD</span>
+                    <span class="stat-label">TrackMan Pro</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="simulator-mockup">
+                <div class="screen"></div>
+                <div class="tee-box"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose Williamsburg Golf Simulator?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>24/7 Access</h3>
+                    <p>Play whenever inspiration strikes. Our facility is open around the clock with secure keyless entry.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>TrackMan Technology</h3>
+                    <p>Professional-grade radar technology provides accurate ball flight data and swing analysis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Famous Courses</h3>
+                    <p>Play Pebble Beach, St. Andrews, Augusta, and 50+ other world-renowned golf courses.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Easy Booking</h3>
+                    <p>Reserve your time slot online or through our mobile app. No staff interaction required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Perfect for Groups</h3>
+                    <p>Host corporate events, birthday parties, or casual rounds with friends in climate-controlled comfort.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Improve Your Game</h3>
+                    <p>Detailed analytics help identify strengths and areas for improvement in your golf swing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Hourly Rate</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">45</span>
+                        <span class="period">/hour</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> TrackMan simulator access</li>
+                        <li><i class="fas fa-check"></i> All courses included</li>
+                        <li><i class="fas fa-check"></i> Performance analytics</li>
+                        <li><i class="fas fa-check"></i> Up to 4 players</li>
+                    </ul>
+                    <button class="btn-outline" onclick="openBookingModal()">Book Now</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>5-Hour Package</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">200</span>
+                        <span class="period">$40/hour</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Everything in hourly rate</li>
+                        <li><i class="fas fa-check"></i> $25 savings</li>
+                        <li><i class="fas fa-check"></i> 30-day expiration</li>
+                        <li><i class="fas fa-check"></i> Transferable sessions</li>
+                    </ul>
+                    <button class="btn-primary" onclick="openBookingModal()">Buy Package</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Monthly Unlimited</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">299</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Unlimited access</li>
+                        <li><i class="fas fa-check"></i> Priority booking</li>
+                        <li><i class="fas fa-check"></i> Guest privileges</li>
+                        <li><i class="fas fa-check"></i> Performance tracking</li>
+                    </ul>
+                    <button class="btn-outline" onclick="openBookingModal()">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Players Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Amazing experience! Being able to play Pebble Beach at 2 AM was incredible. The TrackMan data helped me fix my slice."</p>
+                    <div class="testimonial-author">
+                        <strong>Mike Johnson</strong>
+                        <span>Regular Player</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Perfect for our corporate team building. The self-service system made it easy to host our event without any hassle."</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah Chen</strong>
+                        <span>Event Organizer</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"As a beginner, the detailed analytics and ability to practice anytime has improved my game tremendously."</p>
+                    <div class="testimonial-author">
+                        <strong>David Rodriguez</strong>
+                        <span>New Golfer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Visit Us Today</h2>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>123 Golf Drive<br>Scottsdale, AZ 85260</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p>(555) 123-GOLF</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info@acegolfsims.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Hours</strong>
+                            <p>24/7 Self-Service<br>Staff available 9 AM - 9 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Get in Touch</h3>
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Phone Number">
+                        <textarea placeholder="Message" rows="4"></textarea>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-golf-ball"></i>
+                        <span>Williamsburg Golf Simulator</span>
+                    </div>
+                    <p>Experience the future of golf with our state-of-the-art simulators, available 24/7.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Golf Simulation</a></li>
+                        <li><a href="#">Corporate Events</a></li>
+                        <li><a href="#">Private Lessons</a></li>
+                        <li><a href="#">Group Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Booking Help</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ace Golf Simulators. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Book Your Session</h2>
+            <form class="booking-form">
+                <div class="form-group">
+                    <label for="date">Select Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Select Time</label>
+                    <select id="time" required>
+                        <option value="">Choose a time</option>
+                        <option value="6:00">6:00 AM</option>
+                        <option value="7:00">7:00 AM</option>
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                        <option value="20:00">8:00 PM</option>
+                        <option value="21:00">9:00 PM</option>
+                        <option value="22:00">10:00 PM</option>
+                        <option value="23:00">11:00 PM</option>
+                        <option value="0:00">12:00 AM</option>
+                        <option value="1:00">1:00 AM</option>
+                        <option value="2:00">2:00 AM</option>
+                        <option value="3:00">3:00 AM</option>
+                        <option value="4:00">4:00 AM</option>
+                        <option value="5:00">5:00 AM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <select id="duration" required>
+                        <option value="">Select duration</option>
+                        <option value="1">1 Hour - $45</option>
+                        <option value="2">2 Hours - $90</option>
+                        <option value="3">3 Hours - $135</option>
+                        <option value="4">4 Hours - $180</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="players">Number of Players</label>
+                    <select id="players" required>
+                        <option value="">Select players</option>
+                        <option value="1">1 Player</option>
+                        <option value="2">2 Players</option>
+                        <option value="3">3 Players</option>
+                        <option value="4">4 Players</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Book Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
