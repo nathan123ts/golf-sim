@@ -1167,6 +1167,11 @@ body {
     color: #CCCCCC;
 }
 
+.footer-bottom p {
+    margin: 0;
+    padding: 0;
+}
+
 /* Modal */
 .modal {
     display: none;
