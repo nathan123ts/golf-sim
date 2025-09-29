@@ -288,36 +288,31 @@ function debounce(func, wait) {
     };
 }
 
-// Apply debounce to scroll handlers
-const debouncedScrollHandler = debounce(() => {
-    // Combined scroll handler
+// Simplified scroll handler with requestAnimationFrame for better performance
+let ticking = false;
+
+function updateNavbar() {
     const navbar = document.querySelector('.navbar');
     const scrolled = window.pageYOffset;
 
-    // Navbar effect
+    // Navbar effect only
     if (scrolled > 50) {
         navbar?.classList.add('scrolled');
     } else {
         navbar?.classList.remove('scrolled');
     }
 
-    // Parallax effect for hero section
-    const hero = document.querySelector('.hero');
-    if (hero && scrolled < window.innerHeight) {
-        const rate = scrolled * -0.3;
-        hero.style.transform = `translateY(${rate}px)`;
-    }
+    ticking = false;
+}
 
-    // Bounce effect for hero stats
-    const stats = document.querySelectorAll('.stat');
-    if (scrolled > 100 && scrolled < 800) {
-        stats.forEach((stat, index) => {
-            stat.style.animation = `bounce 1s ease ${index * 0.2}s`;
-        });
+const optimizedScrollHandler = () => {
+    if (!ticking) {
+        requestAnimationFrame(updateNavbar);
+        ticking = true;
     }
-}, 16); // ~60fps
+};
 
-window.addEventListener('scroll', debouncedScrollHandler);
+window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
 
 // Error handling for form validation
 function validateBookingForm() {

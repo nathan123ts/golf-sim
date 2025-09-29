@@ -37,7 +37,6 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background: var(--gradient-dark);
-    background-attachment: fixed;
     overflow-x: hidden;
 }
 
@@ -153,9 +152,12 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('golfing-bay.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
+    contain: layout style paint;
+    transform: translateZ(0);
 }
 
 .hero::before {
@@ -173,6 +175,7 @@ body {
 .hero-content {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
@@ -352,6 +355,8 @@ body {
     padding: 100px 0;
     background: var(--background-primary);
     position: relative;
+    transform: translateZ(0);
+    contain: layout style paint;
 }
 
 .how-it-works h2 {
@@ -1221,6 +1226,9 @@ body {
     .step-connector {
         transform: rotate(90deg);
         margin: 20px 0;
+        align-self: center;
+        justify-content: center;
+        width: 100%;
     }
 
     .step-connector i {
