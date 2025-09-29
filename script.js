@@ -29,6 +29,16 @@ function scrollToSection(sectionId) {
 
 // Navigation scroll effect will be handled by the debounced handler below
 
+// Supabase Configuration
+// TODO: Replace with your actual Supabase URL and anon key
+const SUPABASE_URL = 'https://eyjjtpznbgndjtxpimlr.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5amp0cHpuYmduZGp0eHBpbWxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNzEzNDMsImV4cCI6MjA3NDc0NzM0M30.mTuhgLrr6rNFAa1_3XOThSlGhGopvR264fGvWio7kcU';
+
+let supabase;
+if (typeof window.supabase !== 'undefined') {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
 // Modal functionality
 const modal = document.getElementById('bookingModal');
 const closeBtn = document.querySelector('.close');
@@ -38,12 +48,17 @@ function openBookingModal() {
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
 
-        // Set minimum date to today
-        const dateInput = document.getElementById('date');
-        if (dateInput) {
-            const today = new Date().toISOString().split('T')[0];
-            dateInput.min = today;
-            dateInput.value = today;
+        // Reset form
+        const form = document.getElementById('waitlistForm');
+        if (form) {
+            form.reset();
+        }
+
+        // Clear any previous messages
+        const messageDiv = document.getElementById('submitMessage');
+        if (messageDiv) {
+            messageDiv.style.display = 'none';
+            messageDiv.className = 'submit-message';
         }
     }
 }
@@ -58,12 +73,12 @@ function closeBookingModal() {
 // Close modal when clicking the X
 closeBtn?.addEventListener('click', closeBookingModal);
 
-// Close modal when clicking outside of it
-window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        closeBookingModal();
-    }
-});
+// Disabled: Don't close modal when clicking outside
+// window.addEventListener('click', (event) => {
+//     if (event.target === modal) {
+//         closeBookingModal();
+//     }
+// });
 
 // Close modal with Escape key
 document.addEventListener('keydown', (event) => {
@@ -313,6 +328,127 @@ const optimizedScrollHandler = () => {
 };
 
 window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+
+// Waitlist form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const waitlistForm = document.getElementById('waitlistForm');
+    if (waitlistForm) {
+        waitlistForm.addEventListener('submit', handleWaitlistSubmission);
+    }
+
+    // Phone number formatting
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', formatPhoneNumber);
+    }
+});
+
+// Format phone number as xxx-xxx-xxxx
+function formatPhoneNumber(event) {
+    const input = event.target;
+    const value = input.value.replace(/\D/g, ''); // Remove non-digits
+
+    if (value.length <= 3) {
+        input.value = value;
+    } else if (value.length <= 6) {
+        input.value = `${value.slice(0, 3)}-${value.slice(3)}`;
+    } else {
+        input.value = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6, 10)}`;
+    }
+}
+
+async function handleWaitlistSubmission(event) {
+    event.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+    const messageDiv = document.getElementById('submitMessage');
+
+    // Get form data
+    const formData = new FormData(event.target);
+    const data = {
+        first_name: formData.get('firstName'),
+        last_name: formData.get('lastName'),
+        email: formData.get('email'),
+        phone: formData.get('phone') || null,
+        skill_level: formData.get('skillLevel'),
+        created_at: new Date().toISOString()
+    };
+
+    // Validate required fields
+    if (!data.first_name || !data.last_name || !data.email || !data.skill_level) {
+        showMessage('Please fill in all required fields.', 'error');
+        return;
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+        showMessage('Please enter a valid email address.', 'error');
+        return;
+    }
+
+    // Validate phone number format if provided
+    if (data.phone && data.phone.trim() !== '') {
+        const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+        if (!phoneRegex.test(data.phone)) {
+            showMessage('Please enter phone number in format: xxx-xxx-xxxx', 'error');
+            return;
+        }
+    }
+
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Joining...';
+    showMessage('Submitting your information...', 'loading');
+
+    try {
+        if (!supabase) {
+            throw new Error('Supabase not configured. Please check your configuration.');
+        }
+
+        const { data: result, error } = await supabase
+            .from('williamsburg-waitlist')
+            .insert([data]);
+
+        if (error) {
+            throw error;
+        }
+
+        // Success
+        showMessage('Thank you! You\'ve been added to our waitlist. We\'ll be in touch soon!', 'success');
+        event.target.reset();
+
+        // Close modal after 3 seconds
+        setTimeout(() => {
+            closeBookingModal();
+        }, 3000);
+
+    } catch (error) {
+        console.error('Error submitting to waitlist:', error);
+        let errorMessage = 'Sorry, there was an error submitting your information. Please try again.';
+
+        if (error.message.includes('duplicate') || error.message.includes('unique')) {
+            errorMessage = 'This email address is already on our waitlist!';
+        } else if (error.message.includes('Supabase not configured')) {
+            errorMessage = 'Service temporarily unavailable. Please try again later.';
+        }
+
+        showMessage(errorMessage, 'error');
+    } finally {
+        // Reset button
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join Waitlist';
+    }
+}
+
+function showMessage(message, type) {
+    const messageDiv = document.getElementById('submitMessage');
+    if (messageDiv) {
+        messageDiv.textContent = message;
+        messageDiv.className = `submit-message ${type}`;
+        messageDiv.style.display = 'block';
+    }
+}
 
 // Error handling for form validation
 function validateBookingForm() {

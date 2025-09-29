@@ -22,7 +22,7 @@
                 <li><a href="#how-it-works">How it works</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#book" class="nav-cta">Book Now</a></li>
+                <li><a href="#" onclick="openBookingModal()" class="nav-cta">Book Now</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -41,7 +41,7 @@
                 <button class="btn-primary" onclick="openBookingModal()">
                     Join the Waitlist
                 </button>
-                <button class="btn-secondary" onclick="scrollToSection('features')">
+                <button class="btn-secondary" onclick="scrollToSection('how-it-works')">
                     Learn More
                 </button>
             </div>
@@ -288,25 +288,6 @@
     </section>
     -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content centered">
-                <div class="contact-form">
-                    <h3>Get in Touch</h3>
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <input type="tel" placeholder="Phone Number">
-                        <textarea placeholder="Message" rows="4"></textarea>
-                        <div class="form-button-center">
-                            <button type="submit" class="btn-primary">Send Message</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -359,71 +340,51 @@
         </div>
     </footer>
 
-    <!-- Booking Modal -->
+    <!-- Waitlist Modal -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Book Your Session</h2>
-            <form class="booking-form">
-                <div class="form-group">
-                    <label for="date">Select Date</label>
-                    <input type="date" id="date" required>
+            <h2>Join Our Waitlist</h2>
+            <p class="modal-subtitle">We're currently going through renovations. Join our waitlist and we'll notify you via email or text when we're open!</p>
+            <form id="waitlistForm" class="waitlist-form">
+                <div class="form-row">
+                    <div class="form-group half-width">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="time">Select Time</label>
-                    <select id="time" required>
-                        <option value="">Choose a time</option>
-                        <option value="6:00">6:00 AM</option>
-                        <option value="7:00">7:00 AM</option>
-                        <option value="8:00">8:00 AM</option>
-                        <option value="9:00">9:00 AM</option>
-                        <option value="10:00">10:00 AM</option>
-                        <option value="11:00">11:00 AM</option>
-                        <option value="12:00">12:00 PM</option>
-                        <option value="13:00">1:00 PM</option>
-                        <option value="14:00">2:00 PM</option>
-                        <option value="15:00">3:00 PM</option>
-                        <option value="16:00">4:00 PM</option>
-                        <option value="17:00">5:00 PM</option>
-                        <option value="18:00">6:00 PM</option>
-                        <option value="19:00">7:00 PM</option>
-                        <option value="20:00">8:00 PM</option>
-                        <option value="21:00">9:00 PM</option>
-                        <option value="22:00">10:00 PM</option>
-                        <option value="23:00">11:00 PM</option>
-                        <option value="0:00">12:00 AM</option>
-                        <option value="1:00">1:00 AM</option>
-                        <option value="2:00">2:00 AM</option>
-                        <option value="3:00">3:00 AM</option>
-                        <option value="4:00">4:00 AM</option>
-                        <option value="5:00">5:00 AM</option>
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="xxx-xxx-xxxx" maxlength="12">
+                </div>
+                <div class="form-group">
+                    <label for="skillLevel">Golf Skill Level *</label>
+                    <select id="skillLevel" name="skillLevel" required>
+                        <option value="">Select your skill level</option>
+                        <option value="beginner">Beginner (New to golf)</option>
+                        <option value="recreational">Recreational (Play occasionally)</option>
+                        <option value="intermediate">Intermediate (Regular player)</option>
+                        <option value="advanced">Advanced (Low handicap)</option>
+                        <option value="professional">Professional/Scratch</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="duration">Duration</label>
-                    <select id="duration" required>
-                        <option value="">Select duration</option>
-                        <option value="1">1 Hour - $45</option>
-                        <option value="2">2 Hours - $90</option>
-                        <option value="3">3 Hours - $135</option>
-                        <option value="4">4 Hours - $180</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="players">Number of Players</label>
-                    <select id="players" required>
-                        <option value="">Select players</option>
-                        <option value="1">1 Player</option>
-                        <option value="2">2 Players</option>
-                        <option value="3">3 Players</option>
-                        <option value="4">4 Players</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary">Book Now</button>
+                <button type="submit" class="btn-primary" id="submitBtn">
+                    Join Waitlist
+                </button>
+                <div id="submitMessage" class="submit-message" style="display: none;"></div>
             </form>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
 </html>
