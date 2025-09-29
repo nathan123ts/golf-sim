@@ -29,14 +29,15 @@ function scrollToSection(sectionId) {
 
 // Navigation scroll effect will be handled by the debounced handler below
 
-// Supabase Configuration
-// TODO: Replace with your actual Supabase URL and anon key
+// Supabase Configuration - Load lazily
 const SUPABASE_URL = 'https://eyjjtpznbgndjtxpimlr.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5amp0cHpuYmduZGp0eHBpbWxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNzEzNDMsImV4cCI6MjA3NDc0NzM0M30.mTuhgLrr6rNFAa1_3XOThSlGhGopvR264fGvWio7kcU';
 
 let supabase;
-if (typeof window.supabase !== 'undefined') {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+function initSupabase() {
+    if (typeof window.supabase !== 'undefined' && !supabase) {
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
 }
 
 // Modal functionality
@@ -402,6 +403,7 @@ async function handleWaitlistSubmission(event) {
     showMessage('Submitting your information...', 'loading');
 
     try {
+        initSupabase();
         if (!supabase) {
             throw new Error('Supabase not configured. Please check your configuration.');
         }
@@ -449,6 +451,28 @@ function showMessage(message, type) {
         messageDiv.style.display = 'block';
     }
 }
+
+// FAQ Accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            const isActive = faqItem.classList.contains('active');
+
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Toggle the clicked item
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        });
+    });
+});
 
 // Error handling for form validation
 function validateBookingForm() {
