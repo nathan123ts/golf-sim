@@ -27,15 +27,7 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Update navigation scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar?.classList.add('scrolled');
-    } else {
-        navbar?.classList.remove('scrolled');
-    }
-});
+// Navigation scroll effect will be handled by the debounced handler below
 
 // Modal functionality
 const modal = document.getElementById('bookingModal');
@@ -160,15 +152,7 @@ const observeElements = () => {
 // Initialize animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', observeElements);
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    }
-});
+// Parallax effect will be handled by the debounced handler below
 
 // Dynamic pricing updates
 function updatePricing() {
@@ -237,17 +221,7 @@ function initTestimonialsCarousel() {
 // Initialize carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', initTestimonialsCarousel);
 
-// Add bounce effect to hero stats on scroll
-window.addEventListener('scroll', () => {
-    const stats = document.querySelectorAll('.stat');
-    const scrollPosition = window.pageYOffset;
-
-    if (scrollPosition > 100 && scrollPosition < 800) {
-        stats.forEach((stat, index) => {
-            stat.style.animation = `bounce 1s ease ${index * 0.2}s`;
-        });
-    }
-});
+// Bounce effect will be handled by the debounced handler below
 
 // Add CSS for bounce animation
 const bounceStyle = document.createElement('style');
@@ -327,11 +301,19 @@ const debouncedScrollHandler = debounce(() => {
         navbar?.classList.remove('scrolled');
     }
 
-    // Parallax effect
+    // Parallax effect for hero section
     const hero = document.querySelector('.hero');
     if (hero && scrolled < window.innerHeight) {
         const rate = scrolled * -0.3;
         hero.style.transform = `translateY(${rate}px)`;
+    }
+
+    // Bounce effect for hero stats
+    const stats = document.querySelectorAll('.stat');
+    if (scrolled > 100 && scrolled < 800) {
+        stats.forEach((stat, index) => {
+            stat.style.animation = `bounce 1s ease ${index * 0.2}s`;
+        });
     }
 }, 16); // ~60fps
 

@@ -14,14 +14,14 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <i class="fas fa-golf-ball"></i>
+                <i class="fas fa-golf-club"></i>
                 <span>Williamsburg Golf Simulator</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#how-it-works">How it works</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
                 <li><a href="#book" class="nav-cta">Book Now</a></li>
             </ul>
             <div class="hamburger">
@@ -35,15 +35,13 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Play Golf Anytime, Day or Night</h1>
-            <p>Experience premium golf simulation with TrackMan technology on world-famous courses. Available 24/7 with contactless self-service.</p>
+            <h1>Play Golf 24/7 In Williamsburg</h1>
+            <p>Book golf simulation bays equipped with TrackMan technology on world-famous courses. Available 24/7 with contactless self-service.</p>
             <div class="hero-buttons">
                 <button class="btn-primary" onclick="openBookingModal()">
-                    <i class="fas fa-calendar-alt"></i>
-                    Book Your Session
+                    Join the Waitlist
                 </button>
                 <button class="btn-secondary" onclick="scrollToSection('features')">
-                    <i class="fas fa-play-circle"></i>
                     Learn More
                 </button>
             </div>
@@ -62,10 +60,69 @@
                 </div>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="simulator-mockup">
-                <div class="screen"></div>
-                <div class="tee-box"></div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <p class="section-subtitle">3 Easy Steps to Start Playing</p>
+
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-visual">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Book Online</h3>
+                        <p>Select a date and view bay availability</p>
+                    </div>
+                </div>
+
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-visual">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Enter the Facility</h3>
+                        <p>Use our app to unlock the facilities 5 minutes before your booking</p>
+                    </div>
+                </div>
+
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-visual">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Enjoy the Space</h3>
+                        <p>Enjoy the space with up to 4 people</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <button class="btn-primary" onclick="openBookingModal()">
+                    Book Now
+                </button>
             </div>
         </div>
     </section>
@@ -80,7 +137,7 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <h3>24/7 Access</h3>
-                    <p>Play whenever inspiration strikes. Our facility is open around the clock with secure keyless entry.</p>
+                    <p>Play whenever you want. Our facility is open around the clock with secure keyless entry.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -91,10 +148,10 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-globe-americas"></i>
+                        <i class="fas fa-golf-club"></i>
                     </div>
-                    <h3>Famous Courses</h3>
-                    <p>Play Pebble Beach, St. Andrews, Augusta, and 50+ other world-renowned golf courses.</p>
+                    <h3>Golf Clubs Provided</h3>
+                    <p>Complimentary golf clubs are provided.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -108,7 +165,7 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Perfect for Groups</h3>
-                    <p>Host corporate events, birthday parties, or casual rounds with friends in climate-controlled comfort.</p>
+                    <p>Each bay can accommodate up to 4 golfers as long as only one person golfs at a time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -118,65 +175,68 @@
                     <p>Detailed analytics help identify strengths and areas for improvement in your golf swing.</p>
                 </div>
             </div>
+
+            <div class="cta-section">
+                <button class="btn-primary" onclick="openBookingModal()">
+                    Book Now
+                </button>
+            </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
     <section id="pricing" class="pricing">
         <div class="container">
-            <h2>Simple, Transparent Pricing</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Hourly Rate</h3>
-                    <div class="price">
-                        <span class="currency">$</span>
-                        <span class="amount">45</span>
-                        <span class="period">/hour</span>
-                    </div>
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> TrackMan simulator access</li>
-                        <li><i class="fas fa-check"></i> All courses included</li>
-                        <li><i class="fas fa-check"></i> Performance analytics</li>
-                        <li><i class="fas fa-check"></i> Up to 4 players</li>
-                    </ul>
-                    <button class="btn-outline" onclick="openBookingModal()">Book Now</button>
+            <h2>Flexible Hourly Rates</h2>
+            <p class="pricing-subtitle">Play when it works for you - rates vary by time of day</p>
+
+            <div class="pricing-table">
+                <div class="pricing-row pricing-header">
+                    <div class="time-slot">Time Period</div>
+                    <div class="rate">Rate</div>
                 </div>
-                <div class="pricing-card featured">
-                    <div class="popular-badge">Most Popular</div>
-                    <h3>5-Hour Package</h3>
-                    <div class="price">
-                        <span class="currency">$</span>
-                        <span class="amount">200</span>
-                        <span class="period">$40/hour</span>
+
+                <div class="pricing-row off-peak">
+                    <div class="time-slot">
+                        <div class="period-name">Off-Peak</div>
+                        <div class="period-time">Late Night & Early Morning</div>
                     </div>
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Everything in hourly rate</li>
-                        <li><i class="fas fa-check"></i> $25 savings</li>
-                        <li><i class="fas fa-check"></i> 30-day expiration</li>
-                        <li><i class="fas fa-check"></i> Transferable sessions</li>
-                    </ul>
-                    <button class="btn-primary" onclick="openBookingModal()">Buy Package</button>
-                </div>
-                <div class="pricing-card">
-                    <h3>Monthly Unlimited</h3>
-                    <div class="price">
-                        <span class="currency">$</span>
-                        <span class="amount">299</span>
-                        <span class="period">/month</span>
+                    <div class="rate">
+                        <span class="price-large">$20</span>
                     </div>
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Unlimited access</li>
-                        <li><i class="fas fa-check"></i> Priority booking</li>
-                        <li><i class="fas fa-check"></i> Guest privileges</li>
-                        <li><i class="fas fa-check"></i> Performance tracking</li>
-                    </ul>
-                    <button class="btn-outline" onclick="openBookingModal()">Subscribe</button>
                 </div>
+
+                <div class="pricing-row standard">
+                    <div class="time-slot">
+                        <div class="period-name">Standard</div>
+                        <div class="period-time">Weekdays & Most Times</div>
+                    </div>
+                    <div class="rate">
+                        <span class="price-large">$40</span>
+                    </div>
+                </div>
+
+                <div class="pricing-row peak">
+                    <div class="time-slot">
+                        <div class="period-name">Peak</div>
+                        <div class="period-time">Evenings & Weekends</div>
+                    </div>
+                    <div class="rate">
+                        <span class="price-large">$50</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <button class="btn-primary" onclick="openBookingModal()">
+                    Book Now
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - HIDDEN FOR NOW -->
+    <!--
     <section class="testimonials">
         <div class="container">
             <h2>What Our Players Say</h2>
@@ -226,42 +286,12 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Visit Us Today</h2>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Address</strong>
-                            <p>123 Golf Drive<br>Scottsdale, AZ 85260</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Phone</strong>
-                            <p>(555) 123-GOLF</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email</strong>
-                            <p>info@acegolfsims.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <strong>Hours</strong>
-                            <p>24/7 Self-Service<br>Staff available 9 AM - 9 PM</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="contact-content centered">
                 <div class="contact-form">
                     <h3>Get in Touch</h3>
                     <form>
@@ -269,7 +299,9 @@
                         <input type="email" placeholder="Your Email" required>
                         <input type="tel" placeholder="Phone Number">
                         <textarea placeholder="Message" rows="4"></textarea>
-                        <button type="submit" class="btn-primary">Send Message</button>
+                        <div class="form-button-center">
+                            <button type="submit" class="btn-primary">Send Message</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -282,7 +314,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <i class="fas fa-golf-ball"></i>
+                        <i class="fas fa-golf-club"></i>
                         <span>Williamsburg Golf Simulator</span>
                     </div>
                     <p>Experience the future of golf with our state-of-the-art simulators, available 24/7.</p>
